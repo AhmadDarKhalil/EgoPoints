@@ -32,3 +32,9 @@ pip install opencv-python imageio scikit-learn scikit-image prettytable
 cd ..
 python3 egopoints_eval_cotracker.py --dataset_location=/path/to/ego_points/folder --ckpt_path=/path/to/checkpoint/file
 ```
+
+# Ground Truth Visualisations
+If you wish to visualise the valid tracks for an EgoPoints sequence, then run the following:
+```
+python3 visualise_egopoints_sequence.py --dataset_location=/path/to/ego_points/folder --seq_name=name_of_sequence_folder
+```
