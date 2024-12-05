@@ -7,7 +7,7 @@ Note: The PIPs++ evaluation script expects a folder path for the `--ckpt_path` a
 cd EgoPoints
 git clone https://github.com/aharley/pips2.git
 cd pips2
-git checkout acf40f0af4019ad5e570ebbc210286c0720f2fab 
+git checkout 8b5bd9ecb27274f76f75fcaeff0dbdf13de0b977
 conda create -n pips2 python=3.8
 conda activate pips2
 conda install pytorch torchvision torchaudio pytorch-cuda=11.8 -c pytorch -c nvidia
