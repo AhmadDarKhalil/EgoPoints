@@ -1,5 +1,30 @@
 # EgoPoints
 
+# Annotations
+The EgoPoints evaluation benchmark data will have a structure that looks like:
+```
+ego_points
+|    P01_01_start_15883_end_16103
+|    |    annot.npz
+|    |    rgbs
+|    |    |    frame_0000000001.jpg
+|    |    |    ...
+|    ...
+```
+The annot.npz file will always contain the following keys:
+```
+- 'trajs_2d' = 2d coordinates of each track
+- 'valids' = Mask to show which points have a valid trajectory coordinate
+- 'visibs' = Visibility label for each point in each track, where 1 is visible and 0 is occluded
+- 'vis_valids' = Mask to show which points have valid visibilities. This is required as the default value in 'visibs' is 0 although we only know the actual value for those which have a vis_valids score of 1
+- 'out_of_view' = Label to show which points have been labelled as out of view by the annotator
+- 'occluded' = Label to show which points have been labelled as occluded by the annotator
+```
+A certain portion of these annot.npz files will also include the following, but not all of them:
+```
+- 'dynamic_obj_tracks' = Labels for each track to identify whether they belong to a static or dynamic object
+```
+
 # Evaluation
 ## PIPs++
 Note: The PIPs++ evaluation script expects a folder path for the `--ckpt_path` argument. Their model loader function will then look in this folder for the most recent training step file. For ease of use, simply create a folder for each model you wish to evaluate.
