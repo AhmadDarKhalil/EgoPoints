@@ -27,9 +27,8 @@ args = parser.parse_args()
 print(f"Visualising tracks for {args.seq_name}...")
 
 annots = np.load(f"{args.dataset_location}/{args.seq_name}/annot.npz")
-# ['trajs_2d', 'valids', 'visibs', 'vis_valids', 'out_of_view', 'occluded', 'dynamic_obj_tracks']
 trajs_gt = annots["trajs_2d"]
-valids = annots["valids"] # S, N
+valids = annots["valids"]
 valid_frames = get_valid_frames(valids)
 concat_frames, img_shape = load_valid_frames(f"{args.dataset_location}/{args.seq_name}/rgbs", valid_frames)
 
