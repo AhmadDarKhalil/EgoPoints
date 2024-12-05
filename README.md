@@ -2,6 +2,7 @@
 
 # Evaluation
 ## PIPs++
+Note: The PIPs++ evaluation script expects a folder path for the `--ckpt_path` argument. Their model loader function will then look in this folder for the most recent training step file. For ease of use, simply create a folder for each model you wish to evaluate.
 ```
 cd EgoPoints
 git clone https://github.com/aharley/pips2.git
