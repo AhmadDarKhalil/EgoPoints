@@ -28,8 +28,7 @@ conda activate cotracker_env
 pip install torch torchvision --index-url https://download.pytorch.org/whl/cu118
 pip install -e .
 pip install matplotlib flow_vis tqdm tensorboard
-pip install opencv-python
-pip install imageio
+pip install opencv-python imageio scikit-learn scikit-image prettytable
 cd ..
 python3 egopoints_eval_cotracker.py --dataset_location=/path/to/ego_points/folder --ckpt_path=/path/to/checkpoint/file
 ```
