@@ -1,3 +1,5 @@
+import sys
+sys.path.insert(0, "./pips2")
 import numpy as np
 import saverloader
 from nets.pips2 import Pips

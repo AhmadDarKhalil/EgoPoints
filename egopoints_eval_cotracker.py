@@ -1,13 +1,17 @@
+import sys
+sys.path.insert(0, "./co-tracker")
 import json
 import numpy as np
-import utils.improc
-import utils.misc
 import random, os, cv2
 import torch
 from torch.utils.data import DataLoader
-from epic_datasets.ego_points_benchmark import EgoPointsBenchmark
+from egopoints_dataloader import EgoPointsBenchmark
 from cotracker.predictor import CoTrackerOnlinePredictor
 import argparse
+sys.path.insert(0, "./pips2")
+import utils.improc
+import utils.misc
+import utils.basic
 
 
 def create_pools(n_pool=1000):
