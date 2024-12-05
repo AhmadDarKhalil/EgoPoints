@@ -13,7 +13,7 @@ ego_points
 ```
 The annot.npz file will always contain the following keys:
 ```
-- 'trajs_2d' = 2d coordinates of each track
+- 'trajs_2d' = 2d coordinates of each point in each track
 - 'valids' = Mask to show which points have a valid trajectory coordinate
 - 'visibs' = Visibility label for each point in each track, where 1 is visible and 0 is occluded
 - 'vis_valids' = Mask to show which points have valid visibilities. This is required as the default value in 'visibs' is 0 although we only know the actual value for those which have a vis_valids score of 1
