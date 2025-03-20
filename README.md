@@ -25,6 +25,58 @@ A certain portion of these annot.npz files will also include the following, but 
 - 'dynamic_obj_tracks' = Labels for each track to identify whether they belong to a static or dynamic object
 ```
 
+Below is an abstract subsection that you can insert right after the **Annotations** section in your README:
+
+---
+
+# Camera Pose Association
+
+To associate camera poses with EpicPoints data, first download the dense reconstruction for your target video sequence from the [EPIC-Kitchens Fields downloads page](https://epic-kitchens.github.io/epic-fields/#downloads). Then, install the required dependency:
+
+```bash
+pip install pycolmap
+```
+
+The following concise example demonstrates how to extract the camera-to-world transformation for a specific frame:
+
+```python
+import pycolmap
+import os
+
+# EPIC Fields' root directory
+epic_fields_root = './'
+
+# Example frame path from a dummy EgoPoints sequence
+frame_path = 'Rhodri/ego_points/P26_30_start_883_end_1103/rgbs/frame_0000000003.jpg'
+
+# Parse video identifier and frame indices from the frame path
+video = '_'.join(frame_path.split('/')[-3].split('_')[:2])
+start_frame = int(frame_path.split('/')[-3].split('_')[3])
+sequence_frame_index = int(frame_path.split('/')[-1].split('_')[1].split('.')[0]) - 1
+
+# Load the dense reconstruction
+reconstruction = pycolmap.Reconstruction(os.path.join(epic_fields_root, video))
+
+# Compute the target frame filename such as it match with colmap frame name
+target = f"frame_{str(sequence_frame_index + start_frame).zfill(10)}.jpg"
+
+found=False
+# Find and print the camera-to-world pose for the target frame
+for image in reconstruction.images.values():
+    if image.name == target:
+        print(image.cam_from_world)
+        found=True
+        break
+
+# In case the pose is missing in the reconstruction, it might happen in rare cases
+if not found:       
+    print('no pose for this frame')
+```
+
+This snippet abstracts the process of associating a frame with its corresponding camera pose (tvec and qvec). Feel free to to use or adopt it if you need the camera pose
+
+---
+
 # Evaluation
 ## PIPs++
 Note: The PIPs++ evaluation script expects a folder path for the `--ckpt_path` argument. Their model loader function will then look in this folder for the most recent training step file. For ease of use, simply create a folder for each model you wish to evaluate.
