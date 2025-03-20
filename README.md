@@ -31,7 +31,7 @@ Below is an abstract subsection that you can insert right after the **Annotation
 
 # Camera Pose Association
 
-To associate camera poses with EpicPoints data, first download the dense reconstruction for your target video sequence from the [EPIC-Kitchens Fields downloads page](https://epic-kitchens.github.io/epic-fields/#downloads). Then, install the required dependency:
+To associate camera poses with EpicPoints data, first download the dense reconstruction for your target video sequence from the [EPIC Fields downloads page](https://epic-kitchens.github.io/epic-fields/#downloads). Then, install the required dependency:
 
 ```bash
 pip install pycolmap
